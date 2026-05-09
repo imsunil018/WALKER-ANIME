@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Walker Anime">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#ff4d6d" stop-opacity="0.9"/>
+      <stop offset="55%" stop-color="#ff1a3c" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ff1a3c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ff1a3c"/>
+      <stop offset="100%" stop-color="#ff4d6d"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+  </defs>
+
+  <circle cx="32" cy="32" r="30" fill="#070709"/>
+  <circle cx="32" cy="32" r="28" fill="url(#glow)" filter="url(#soft)"/>
+  <circle cx="32" cy="32" r="29" fill="none" stroke="url(#ring)" stroke-width="2.2" opacity="0.9"/>
+
+  <path
+    d="M14 18h7l5.1 20.6L32 26l5.9 12.6L43 18h7L41.3 46h-6.2L32 39.3 28.9 46h-6.2L14 18z"
+    fill="#f0f0ff"/>
+  <path d="M44 17.5l3 1.3-9.8 22.7-3-1.3L44 17.5z" fill="#ff1a3c" opacity="0.9"/>
+</svg>
