@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070709">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>WALKER ANIME — Watch Premium Anime</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oxanium:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  </head>
+  <body>
+
+    <!-- NAV -->
+    <nav id="navbar">
+      <a class="logo" onclick="scrollTop()">
+        <span class="logo-main">WALKER</span>
+        <span class="logo-sub">ANIME</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#heroSection" data-section="heroSection">Home</a></li>
+        <li><a href="#trending" data-section="trending">Trending</a></li>
+        <li><a href="#new-releases" data-section="new-releases">New</a></li>
+        <li><a href="#top-picks" data-section="top-picks">Top Picks</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="search-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search anime..."
+            autocomplete="off" oninput="handleSearch(this.value)"
+            onblur="closeSearch()">
+          <div id="searchResults"></div>
+        </div>
+        <div class="btn-icon"
+          onclick="showToast('❤️ Watchlist coming soon!')"><i
+            class="fa-solid fa-bookmark"></i></div>
+        <div class="btn-icon" onclick="showToast('👤 Profile coming soon!')"><i
+            class="fa-solid fa-user"></i></div>
+      </div>
+    </nav>
+
+    <div class="mobile-nav" id="mobileNav" aria-label="Bottom navigation">
+      <a href="#heroSection" data-section="heroSection" aria-label="Home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="#trending" data-section="trending" aria-label="Trending"><i class="fa-solid fa-fire"></i><span>Trend</span></a>
+      <a href="#new-releases" data-section="new-releases" aria-label="New"><i class="fa-solid fa-bolt"></i><span>New</span></a>
+      <a href="#top-picks" data-section="top-picks" aria-label="Top Picks"><i class="fa-solid fa-star"></i><span>Picks</span></a>
+      <a href="admin.html" aria-label="Admin"><i class="fa-solid fa-gear"></i><span>Admin</span></a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="heroSection">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-bottom"></div>
+      <div class="hero-content" id="heroContent">
+        <div class="hero-badge" id="heroBadge">NEW SEASON</div>
+        <h1 class="hero-title" id="heroTitle">Loading...</h1>
+        <div class="hero-meta">
+          <span class="rating" id="heroRating"></span>
+          <span class="dot"></span>
+          <span id="heroYear"></span>
+          <span class="dot"></span>
+          <span id="heroGenre"></span>
+          <span class="dot"></span>
+          <span id="heroEps"></span>
+        </div>
+        <p class="hero-desc" id="heroDesc"></p>
+        <div class="hero-btns">
+          <button class="btn-primary" id="heroPlayBtn">
+            <i class="fa-solid fa-play"></i> WATCH NOW
+          </button>
+          <button class="btn-outline" id="heroInfoBtn">
+            <i class="fa-solid fa-circle-info"></i> MORE INFO
+          </button>
+        </div>
+      </div>
+      <div class="hero-thumbs" id="heroThumbs"></div>
+    </section>
+
+    <!-- MAIN -->
+    <div class="sections">
+
+      <!-- STATS -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-num" data-stat="titles">0</div>
+          <div class="stat-label">Titles Streaming</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-stat="visits">0</div>
+          <div class="stat-label">Total Visits</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-stat="plays">0</div>
+          <div class="stat-label">Watch Events</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-stat="top-title">—</div>
+          <div class="stat-label">Top Title</div>
+        </div>
+      </div>
+
+      <!-- TRENDING -->
+      <section class="section" id="trending">
+        <div class="section-header">
+          <div class="section-title">
+            <div class="section-icon">🔥</div>
+            TRENDING NOW
+            <div class="section-line"></div>
+          </div>
+          <a class="see-all"
+            onclick="showToast('📋 Full list coming soon!')">SEE ALL <i
+              class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="anime-row" id="trendingRow"></div>
+      </section>
+
+      <!-- NEW RELEASES -->
+      <section class="section" id="new-releases">
+        <div class="section-header">
+          <div class="section-title">
+            <div class="section-icon">✨</div>
+            NEW RELEASES
+            <div class="section-line"></div>
+          </div>
+          <a class="see-all"
+            onclick="showToast('📋 Full list coming soon!')">SEE ALL <i
+              class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="anime-row" id="newRow"></div>
+      </section>
+
+      <!-- TOP PICKS (Wide Cards) -->
+      <section class="section" id="top-picks">
+        <div class="section-header">
+          <div class="section-title">
+            <div class="section-icon">🌟</div>
+            TOP PICKS
+            <div class="section-line"></div>
+          </div>
+        </div>
+        <div class="wide-row" id="topPicksGrid"></div>
+      </section>
+
+      <!-- CLASSICS -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">
+            <div class="section-icon">🏆</div>
+            ALL-TIME CLASSICS
+            <div class="section-line"></div>
+          </div>
+          <a class="see-all"
+            onclick="showToast('📋 Full list coming soon!')">SEE ALL <i
+              class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="anime-row" id="classicsRow"></div>
+      </section>
+
+    </div>
+
+    <div class="red-bar"></div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <div class="footer-logo">WALKER ANIME</div>
+        <div class="footer-text" style="margin-top:6px">© 2026 Walker Anime. All
+          rights reserved.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </footer>
+
+    <!-- DETAIL MODAL -->
+    <div class="modal-overlay" id="detailModal"
+      onclick="closeModalCheck(event)">
+      <div class="modal-box" id="modalBox">
+        <div class="modal-banner" id="modalBanner">
+          <button class="modal-close" onclick="closeModal()"><i
+              class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-inner">
+            <div class="modal-poster"><img id="modalThumb" src alt></div>
+            <div class="modal-info">
+              <h1 class="modal-title" id="modalTitle"></h1>
+              <div class="modal-meta-row">
+                <span class="rating" id="modalRating"></span>
+                <span id="modalYear2"></span>
+                <span class="status" id="modalStatus"></span>
+                <span id="modalEps2"></span>
+              </div>
+              <p class="modal-desc" id="modalDesc"></p>
+              <div class="modal-stats">
+                <div>
+                  <span class="modal-stat-label">Studio</span>
+                  <span class="modal-stat-val" id="modalStudio"></span>
+                </div>
+                <div>
+                  <span class="modal-stat-label">Episodes</span>
+                  <span class="modal-stat-val" id="modalEpisodes"></span>
+                </div>
+                <div>
+                  <span class="modal-stat-label">Season</span>
+                  <span class="modal-stat-val" id="modalSeason"></span>
+                </div>
+              </div>
+              <div class="modal-genres" id="modalGenres"></div>
+              <div class="modal-actions">
+                <button class="btn-primary" style="flex:1" id="modalPlayBtn">
+                  <i class="fa-solid fa-play"></i> WATCH NOW
+                </button>
+                <div class="modal-fav" id="favBtn" onclick="toggleFav()"><i
+                    class="fa-solid fa-heart"></i></div>
+                <div class="modal-fav" id="shareBtn" onclick="shareCurrentAnime()" aria-label="Share"><i
+                    class="fa-solid fa-share-nodes"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLAYER MODAL -->
+    <div class="player-overlay" id="playerOverlay">
+      <div class="player-header">
+        <div class="player-title" id="playerTitle">
+          <span
+            style="color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px">WALKER</span>
+          <span></span>
+        </div>
+        <button class="player-close" onclick="closePlayer()"><i
+            class="fa-solid fa-xmark"></i></button>
+      </div>
+      <video class="player-video" id="playerVideo" controls autoplay></video>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <script src="data-layer.js"></script>
+    <script src="script.js"></script>
+    
+  </body>
+</html>
